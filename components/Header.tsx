@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MenuIcon } from './icons/MenuIcon';
 import { CloseIcon } from './icons/CloseIcon';
-import { RESUME_URL } from '../constants';
+// import { RESUME_URL } from '../constants';
 
 interface HeaderProps {
     onNavigate: (page: 'home' | 'about') => void;
@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     const navItems = [
         { name: 'Home', action: () => onNavigate('home') },
         { name: 'About', action: () => onNavigate('about') },
-        { name: 'Resume', action: () => window.open(RESUME_URL, '_blank') },
+        // { name: 'Resume', action: () => window.open(RESUME_URL, '_blank') },
     ];
 
     const handleLinkClick = (action: () => void) => {

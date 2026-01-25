@@ -2,9 +2,6 @@ import React from 'react';
 import { type PortfolioItem } from '../types';
 import { ArrowUpRightIcon } from '../components/icons/ArrowUpRightIcon';
 import { portfolioItems } from '../constants';
-import { LaptopFrame } from '../components/LaptopFrame';
-import { PhoneFrame } from '../components/PhoneFrame';
-import { CompositeFrame } from '../components/CompositeFrame';
 
 interface CaseStudyPageProps {
   study: PortfolioItem;
@@ -50,7 +47,7 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({ study, onNavigate }) => {
 
       {/* Hero Image */}
       <section className="my-12 md:my-24">
-          <LaptopFrame src={study.caseStudy.hero.imageUrl} alt={study.caseStudy.hero.imageAlt} />
+          <img src={study.caseStudy.hero.imageUrl} alt={study.caseStudy.hero.imageAlt} className="w-full h-auto rounded-lg" />
       </section>
       
       {/* Content Sections */}
@@ -67,22 +64,7 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({ study, onNavigate }) => {
                   </div>
                   {section.imageUrl && (
                       <div className="pt-8">
-                        {section.device === 'laptop-and-phone' && section.phoneImageUrl ? (
-                            <CompositeFrame
-                                laptopSrc={section.imageUrl}
-                                laptopAlt={section.imageAlt || ''}
-                                isLaptopScrollable={section.isScrollable}
-                                phoneSrc={section.phoneImageUrl}
-                                phoneAlt={section.phoneImageAlt || ''}
-                                isPhoneScrollable={section.isPhoneScrollable}
-                            />
-                        ) : section.device === 'laptop' ? (
-                            <LaptopFrame src={section.imageUrl} alt={section.imageAlt || section.title} isScrollable={section.isScrollable} />
-                        ) : section.device === 'phone' ? (
-                            <PhoneFrame src={section.imageUrl} alt={section.imageAlt || section.title} isScrollable={section.isScrollable} />
-                        ) : (
-                            <img src={section.imageUrl} alt={section.imageAlt || section.title} className="rounded-xl w-full h-auto object-cover"/>
-                        )}
+                        <img src={section.imageUrl} alt={section.imageAlt || section.title} className="rounded-xl w-full h-auto object-cover"/>
                       </div>
                   )}
               </section>

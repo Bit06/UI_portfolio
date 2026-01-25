@@ -1,7 +1,7 @@
 import React from 'react';
 import { DribbbleIcon } from './icons/DribbbleIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
-import { RESUME_URL } from '../constants';
+// import { RESUME_URL } from '../constants';
 
 interface FooterProps {
     onNavigate: (page: 'home' | 'about') => void;
@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const navItems = [
       { name: 'Home', action: () => onNavigate('home') },
       { name: 'About', action: () => onNavigate('about') },
-      { name: 'Resume', action: () => window.open(RESUME_URL, '_blank') },
+      // { name: 'Resume', action: () => window.open(RESUME_URL, '_blank') },
   ];
 
   return (
@@ -29,8 +29,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                    <a href="#" aria-label="Dribbble" className="text-zinc-500 hover:text-white transition-colors"><DribbbleIcon /></a>
-                    <a href="http://www.linkedin.com/in/davenife" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-zinc-500 hover:text-white transition-colors"><LinkedInIcon /></a>
+                    <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" aria-label="Dribbble" className="text-zinc-500 hover:text-white transition-colors"><DribbbleIcon /></a>
+                    <a href="https://www.linkedin.com/in/davenife" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-zinc-500 hover:text-white transition-colors"><LinkedInIcon /></a>
                 </div>
             </div>
         </div>

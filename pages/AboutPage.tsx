@@ -1,5 +1,5 @@
 import React from 'react';
-import { aboutContent, RESUME_URL } from '../constants';
+import { aboutContent } from '../constants';
 
 const AboutPage: React.FC = () => {
     return (
@@ -42,9 +42,10 @@ const AboutPage: React.FC = () => {
                         {aboutContent.credentials.map((credential, index) => (
                             <p key={index} className="text-white font-medium">{credential}</p>
                         ))}
+                        {/*
                         <div className="pt-4">
                             <a
-                                href={RESUME_URL}
+                                href="#"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-block font-medium text-white relative group text-lg"
@@ -53,6 +54,7 @@ const AboutPage: React.FC = () => {
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                             </a>
                         </div>
+                        */}
                     </div>
                 </div>
             </section>

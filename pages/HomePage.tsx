@@ -1,7 +1,5 @@
 import React from 'react';
 import { portfolioItems } from '../constants';
-import { LaptopFrame } from '../components/LaptopFrame';
-import { PhoneFrame } from '../components/PhoneFrame';
 
 const HeroBackgroundTile: React.FC = () => (
     <div className="w-12 h-12 border border-zinc-800/50 transform rotate-45 transition-all duration-300 group-hover:bg-zinc-800/50 group-hover:scale-125" />
@@ -46,16 +44,7 @@ const HomePage: React.FC<{ onNavigate: (page: 'case-study', slug: string) => voi
                         style={{ animationDelay: `${500 + index * 150}ms` }}
                     >
                         <div className="transition-transform duration-500 ease-out group-hover:scale-[1.02] relative aspect-[4/3] flex items-center justify-center">
-                           <div className="relative w-full">
-                               <div className={item.phoneImageUrl ? "pr-[25%]" : ""}>
-                                   <LaptopFrame src={item.imageUrl} alt={item.title} />
-                               </div>
-                               {item.phoneImageUrl && (
-                               <div className="absolute right-0 bottom-4 w-1/3 max-w-[150px] z-10 transition-transform duration-500 ease-out group-hover:-translate-y-2">
-                                   <PhoneFrame src={item.phoneImageUrl} alt={`${item.title} mobile view`} />
-                               </div>
-                               )}
-                           </div>
+                           <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover rounded-lg" />
                         </div>
                         <div className="mt-4 px-1">
                             <h3 className="text-xl font-bold text-white">{item.title}</h3>
