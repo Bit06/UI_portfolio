@@ -1,6 +1,6 @@
 # Performance & Security Guide
 
-## 🚀 Fast Loading Speed
+##  Fast Loading Speed
 
 ### ✅ Already Implemented:
 - **Vite Build System**: Fast bundling with code splitting

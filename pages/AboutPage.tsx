@@ -1,5 +1,6 @@
 import React from 'react';
 import { aboutContent } from '../constants';
+import { images } from '../components/Image';
 
 const AboutPage: React.FC = () => {
     return (
@@ -8,7 +9,7 @@ const AboutPage: React.FC = () => {
                 <div className="grid md:grid-cols-3 gap-12 items-start">
                     <div className="md:col-span-1">
                         <img 
-                            src={aboutContent.imageUrl} 
+                            src={images.profile} 
                             alt={aboutContent.name} 
                             className="rounded-lg w-full object-cover aspect-square"
                         />

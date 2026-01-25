@@ -3,6 +3,9 @@ const echoHomepage = new URL('./ECHO - Homepage.png', import.meta.url).href;
 const shopHebronHomepage = new URL('./SHOP HEBRON - Homepage.png', import.meta.url).href;
 const estateHomepage = new URL('./MY-ESTATE - Homepage.png', import.meta.url).href;
 
+// Profile Image
+const profileImage = new URL('./Profile image.png', import.meta.url).href;
+
 // Echo Case Study Images
 const echoFirstImage = new URL('./ECHO - Fist Image.png', import.meta.url).href;
 const echoSecondImage = new URL('./ECHO - Second Image.png', import.meta.url).href;
@@ -17,6 +20,7 @@ const estateSecondImage = new URL('./MY-ESTATE - Second Image.png', import.meta.
 
 // Tagged image export for easy reference
 export const images = {
+  profile: profileImage,
   portfolio: {
     echo: echoHomepage,
     shopHebron: shopHebronHomepage,
