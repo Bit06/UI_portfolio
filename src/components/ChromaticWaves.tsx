@@ -615,17 +615,6 @@ export default function ChromaticWaves({
         ...style,
       }}
     >
-      <div
-        style={{
-          width: `${INTRINSIC_WIDTH}px`,
-          height: `${INTRINSIC_HEIGHT}px`,
-          minWidth: `${INTRINSIC_WIDTH}px`,
-          minHeight: `${INTRINSIC_HEIGHT}px`,
-          visibility: "hidden",
-          position: "absolute",
-          pointerEvents: "none",
-        }}
-      />
       <div ref={containerRef} style={{ position: "absolute", inset: 0 }} />
     </div>
   );
