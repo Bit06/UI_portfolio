@@ -1,13 +1,19 @@
-import { type PortfolioItem, type AboutContent } from './types';
-import { images } from './components/Image';
+import { type PortfolioItem, type AboutContent } from '@/types';
+
 
 export const RESUME_URL = '/resume.pdf'; // Placeholder for the resume PDF
+
+export const heroContent = {
+  availability: "AVAILABLE FOR WORK",
+  headline: "Designing simple, intuitive solutions to complex problems.",
+  subheadline: "Passionate about transforming complex problems into simple, intuitive, and user-friendly designs.",
+};
 
 export const aboutContent: AboutContent = {
     name: "David Oloniyo",
     introduction: "I'm a UI/UX Designer and Computer Engineering student passionate about transforming complex problems into simple, intuitive, and user-friendly designs.\n\nI'm a designer driven by one core belief: technology should be a bridge, not a barrier. My passion is to find the frustration in everyday systems, whether it's the chaos of a student marketplace or the disconnect in a campus-wide feedback loop, and design a solution that feels effortless and logical.\n\nMy process is built on empathy and data. I love digging into a problem, understanding the real human needs, and iterating until the solution truly works.",
     imageUrl: 'https://i.imgur.com/uFVErFN.png',
-    skills: ['User Research & Usability Testing', 'Information Architecture', 'Wireframing & Prototyping', 'UI & Visual Design', 'Design System Thinking', 'Figma', 'Adobe XD'],
+    skills: ['User Research', 'Wireframing', 'Prototyping', 'User Flow', 'Collaboration', 'Empathy', 'Visual & UI', 'Information Design', 'Critical Thinking', 'Communication', 'Design Thinking', '&'],
     credentials: [
         'Google UX Design Certificate',
         'IBM SkillsBuild - User Experience Design Fundamentals',
@@ -19,7 +25,7 @@ export const portfolioItems: PortfolioItem[] = [
     slug: 'echo',
     title: 'Echo',
     category: 'Civic-Tech Platform',
-    imageUrl: images.portfolio.echo,
+    imageUrl: '/images/ECHO - Homepage.jpg',
     phoneImageUrl: 'https://i.imgur.com/M5E162p.png',
     summary: 'A civic-tech platform to bridge the communication gap between students and university leadership with data-driven design.',
     caseStudy: {
@@ -29,7 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
         summary: "Co-founded and led the design for Echo, a platform empowering students to voice issues and propose solutions, using community support to provide leaders with clear, data-driven insights. Validated with 1,489 students.",
         role: "Co-Founder & Design Lead",
         timeline: "Concept to Prototype",
-        imageUrl: images.caseStudy.echo.first,
+        imageUrl: '/images/ECHO - Fist Image.jpg',
         imageAlt: "Polished hero image of the Echo platform"
       },
       sections: [
@@ -48,7 +54,7 @@ export const portfolioItems: PortfolioItem[] = [
         {
           title: "The Solution: A Unified Platform",
           content: "The culmination of this process is the Echo platform prototype, designed to be intuitive for users and insightful for leaders across all devices. The platform was designed with a mobile-first approach to ensure accessibility, with key features like the Student Dashboard, submission flows, and Administrator analytics available on both desktop and mobile.",
-          imageUrl: images.caseStudy.echo.second,
+          imageUrl: '/images/ECHO - Second Image.jpg',
           imageAlt: 'High-fidelity mockups of key Echo screens',
           phoneImageUrl: 'https://i.imgur.com/M5E162p.png',
           phoneImageAlt: 'High-fidelity mockups of key Echo mobile screens',
@@ -57,7 +63,7 @@ export const portfolioItems: PortfolioItem[] = [
         {
           title: "Reflections & Learnings",
           content: "1. Power of Data-Driven Advocacy: The Student Report demonstrated that objective data can bridge emotional divides and create a foundation for constructive dialogue much more effectively than noise.\n\n2. Designing for Dual Trust: A successful civic-tech platform isn't just about UI; it's about engineering trust between potentially skeptical user groups through features like transparency, security, and clear processes.\n\n3. From Problem to Product: This project was a crash course in the end-to-end product lifecycle – identifying a deep user need, validating it with research, designing a solution, building partnerships, and planning for launch.",
-          imageUrl: images.portfolio.echo,
+          imageUrl: '/images/ECHO - Homepage.jpg',
           imageAlt: 'Echo case study reflections'
         }
       ]
@@ -67,7 +73,7 @@ export const portfolioItems: PortfolioItem[] = [
     slug: 'shop-hebron',
     title: 'Shop Hebron',
     category: 'E-Commerce Platform',
-    imageUrl: images.portfolio.shopHebron,
+    imageUrl: '/images/SHOP HEBRON - Homepage.jpg',
     phoneImageUrl: 'https://i.imgur.com/lEa6Uht.png',
     summary: 'Designing a centralized, trustworthy e-commerce platform to streamline a chaotic student-run economy.',
     caseStudy: {
@@ -77,7 +83,7 @@ export const portfolioItems: PortfolioItem[] = [
         summary: "Designed and prototyped a centralized e-commerce platform for a university community, solving core user frustrations around friction and trust. Key designs included distinct buyer/seller interfaces, a user-centric dual-purchase flow, and a seller verification system.",
         role: "UI/UX Designer & Front-End Developer",
         timeline: "Concept to Prototype",
-        imageUrl: images.caseStudy.shopHebron.first,
+        imageUrl: '/images/SHOP HEBRON - First Image.jpg',
         imageAlt: "High-quality mockup of the Shop Hebron homepage"
       },
       sections: [
@@ -88,7 +94,7 @@ export const portfolioItems: PortfolioItem[] = [
         {
             title: "Solution: A Clean, Responsive Marketplace",
             content: "The redesigned interface provides a clean, intuitive shopping experience on any device. The desktop view features robust filtering and clear categorization, while the prioritized mobile experience offers touch-friendly navigation and a streamlined checkout. This professional and trustworthy environment directly addresses the 'spammy' nature of the old system.",
-            imageUrl: images.caseStudy.shopHebron.second,
+            imageUrl: '/images/SHOP HEBRON - Second Image.jpg',
             imageAlt: 'Desktop interface for Shop Hebron',
             phoneImageUrl: 'https://i.imgur.com/lEa6Uht.png',
             phoneImageAlt: 'Mobile interface for Shop Hebron',
@@ -97,7 +103,7 @@ export const portfolioItems: PortfolioItem[] = [
         {
           title: "Reflections & Learnings",
           content: "1. Qualitative Insights Drive Design: Understanding user frustrations through observation and interviews was key to defining the right problems and designing relevant solutions like the dual-purchase flow.\n\n2. Trust is Foundational: In peer-to-peer marketplaces, designing for trust (verification, secure payments) is paramount and often more critical than novel UI features.\n\n3. Context is Key: Designing specifically for the 'Hebron' student context allowed for tailored solutions that wouldn't apply to a generic e-commerce site.",
-          imageUrl: images.portfolio.shopHebron,
+          imageUrl: '/images/SHOP HEBRON - Homepage.jpg',
           imageAlt: 'Shop Hebron case study reflections'
         }
       ]
@@ -107,7 +113,7 @@ export const portfolioItems: PortfolioItem[] = [
     slug: 'estate',
     title: 'Estate',
     category: 'Real Estate Management',
-    imageUrl: images.portfolio.estate,
+    imageUrl: '/images/MY-ESTATE - Homepage.jpg',
     phoneImageUrl: 'https://i.imgur.com/GCRQk36.png',
     summary: 'A centralized, multi-role platform that simplifies property management for landlords, tenants, and facility managers.',
     caseStudy: {
@@ -117,7 +123,7 @@ export const portfolioItems: PortfolioItem[] = [
         summary: "A centralized, multi-role platform that simplifies operations by providing customized dashboards for five distinct user types, from Tenants paying rent to Executives monitoring portfolio health.",
         role: "Lead UI/UX Designer",
         timeline: "Contract Project",
-        imageUrl: images.caseStudy.estate.first,
+        imageUrl: '/images/MY-ESTATE - First Image.jpg',
         imageAlt: "High-quality mockup of the main Executive dashboard"
       },
       sections: [
@@ -132,7 +138,7 @@ export const portfolioItems: PortfolioItem[] = [
         {
           title: "Solution: Role-Based Dashboards",
           content: "The final design delivers a unique, tailored dashboard for each user. The Executive 'God view' provides a high-level overview of portfolio health and KPIs, while the mobile app provides managers with critical data and quick actions on the go, ensuring users can stay on top of their properties from anywhere.",
-          imageUrl: images.caseStudy.estate.second,
+          imageUrl: '/images/MY-ESTATE - Second Image.png',
           imageAlt: 'Executive Dashboard for Estate',
           isScrollable: true,
           phoneImageUrl: 'https://i.imgur.com/GCRQk36.png',
@@ -142,10 +148,35 @@ export const portfolioItems: PortfolioItem[] = [
         {
           title: "Reflections & Learnings",
           content: "1. Discovery is Everything: The most critical milestone was identifying the 5 distinct user roles. The 'Tenant vs. Resident' insight saved the project from designing a confusing, one-size-fits-all product.\n\n2. Design Systems are Non-Negotiable for Complexity: Managing 5+ dashboards would have been impossible without a centralized component library. It was the only way to maintain consistency and efficiency.\n\n3. Microcopy is UX: A user's experience is shaped by words. Building a microcopy library ensured the platform felt empathetic and intelligent, adapting its tone for each role.",
-          imageUrl: images.portfolio.estate,
+          imageUrl: '/images/MY-ESTATE - Homepage.jpg',
           imageAlt: 'Estate case study reflections',
         }
       ]
     }
   },
+  {
+    slug: 'chowcheck',
+    title: 'ChowCheck',
+    category: 'Productivity SaaS',
+    imageUrl: '/images/MY-ESTATE - Homepage.jpg', // Placeholder for now
+    phoneImageUrl: '',
+    summary: 'Dummy text for ChowCheck. This is the new fourth case study replacing placeholder content.',
+    caseStudy: {
+      hero: {
+        title: "ChowCheck: Streamlining Productivity",
+        tags: ["SaaS", "UI/UX Design"],
+        summary: "Dummy text for the ChowCheck case study. Detailed information will be added later.",
+        role: "Lead Designer",
+        timeline: "2026",
+        imageUrl: '/images/MY-ESTATE - Homepage.jpg',
+        imageAlt: "ChowCheck Hero Placeholder"
+      },
+      sections: [
+        {
+          title: "The Problem",
+          content: "Dummy text for ChowCheck. This section will be populated with actual case study details later."
+        }
+      ]
+    }
+  }
 ];

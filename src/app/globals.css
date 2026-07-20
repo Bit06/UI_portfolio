@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-primary: var(--foreground);
+  --color-secondary: #6B7280;
+  
+  --color-accent: #FF5722;
+
+  --font-sans: var(--font-inter);
+  --font-pixel: var(--font-dotgothic);
+
+  /* Monochrome Theme */
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-primary: #ffffff;
+  --color-secondary: #888888;
+  --color-accent: #ffffff;
+}
+
+@utility text-pixel {
+  font-family: var(--font-dot-gothic);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
