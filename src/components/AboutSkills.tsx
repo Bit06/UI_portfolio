@@ -1,11 +1,11 @@
 "use client";
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { PenTool, Globe, Sparkles, Fingerprint } from 'lucide-react';
 import { aboutContent } from '@/lib/constants';
 import PhysicsSkills from './PhysicsSkills';
 
-const revealVariants = {
+const revealVariants: Variants = {
   hidden: { opacity: 0.2, y: 10 },
   visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
 };

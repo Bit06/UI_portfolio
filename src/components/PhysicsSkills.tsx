@@ -74,8 +74,8 @@ export default function PhysicsSkills() {
     Matter.Composite.add(engine.world, mouseConstraint);
 
     // Disable scroll hijacking by matter.js mouse
-    mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
-    mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
+    mouse.element.removeEventListener("mousewheel", (mouse as any).mousewheel);
+    mouse.element.removeEventListener("DOMMouseScroll", (mouse as any).mousewheel);
 
     // Create pills
     const made: any[] = [];
