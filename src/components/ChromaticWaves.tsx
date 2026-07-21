@@ -483,7 +483,10 @@ export default function ChromaticWaves({
     }
 
     return () => {
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
+      }
       if (resizeHandler) window.removeEventListener("resize", resizeHandler);
       if (resizeObserver) {
         try {
