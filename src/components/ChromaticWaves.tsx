@@ -23,7 +23,7 @@ void main() {
 }`;
 
 const perlinFragmentShader = `#version 300 es
-precision mediump float;
+precision highp float;
 uniform float uFrequency;
 uniform float uTime;
 uniform float uSpeed;
@@ -485,7 +485,10 @@ export default function ChromaticWaves({
     }
 
     return () => {
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
+      }
       if (resizeHandler) window.removeEventListener("resize", resizeHandler);
       if (resizeObserver) {
         try {
@@ -605,6 +608,7 @@ export default function ChromaticWaves({
 
   return (
     <div
+      ref={containerRef}
       style={{
         position: "absolute",
         inset: 0,
@@ -613,8 +617,6 @@ export default function ChromaticWaves({
         overflow: "hidden",
         ...style,
       }}
-    >
-      <div ref={containerRef} style={{ position: "absolute", inset: 0 }} />
-    </div>
+    />
   );
 }
