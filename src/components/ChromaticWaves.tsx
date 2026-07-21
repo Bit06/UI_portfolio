@@ -109,13 +109,11 @@ void main() {
 const dotFragmentShader = `
 precision mediump float;
 
-#define MAX_COLORS 10
-
 uniform sampler2D uTexture;
 uniform vec2 uResolution;
 uniform int uPaletteCount;
-uniform vec3 uPalette[MAX_COLORS];
-uniform float uPaletteAlpha[MAX_COLORS];
+uniform vec3 uPalette[10];
+uniform float uPaletteAlpha[10];
 uniform float uCellSize;
 uniform float uGamma;
 uniform float uPaletteBias;
@@ -145,7 +143,7 @@ void main() {
   if (cnt > 1) {
     float scaled = g2 * float(cnt - 1);
     int seg = int(floor(scaled));
-    for (int i = 0; i < MAX_COLORS - 1; i++) {
+    for (int i = 0; i < 9; i++) {
       if (i == seg) {
         float f = clamp(scaled - float(i), 0.0, 1.0);
         dotCol = mix(uPalette[i], uPalette[i + 1], f);
