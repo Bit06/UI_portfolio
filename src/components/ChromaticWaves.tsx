@@ -609,13 +609,10 @@ export default function ChromaticWaves({
   return (
     <div
       style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
+        position: "absolute",
+        inset: 0,
         background: bgColor,
         lineHeight: 0,
-        minWidth: 0,
-        minHeight: 0,
         overflow: "hidden",
         ...style,
       }}
