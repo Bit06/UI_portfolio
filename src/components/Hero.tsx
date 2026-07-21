@@ -134,16 +134,13 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 bg-background text-foreground">
-      <div 
-        className="absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-70"
-        style={{ transform: 'translateZ(0)' }}
-      >
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-70">
          <ChromaticWaves 
            frequency={5} 
            cellSize={5} 
            gamma={9} 
            paletteBias={-6} 
-           bgColor="#000000" 
+           bgColor="transparent" 
            colors={animState !== 'idle' ? ['#ff6600', '#ffaa00', '#ffffff'] : ['#ffffff', '#cccccc', '#666666']} 
          />
       </div>
