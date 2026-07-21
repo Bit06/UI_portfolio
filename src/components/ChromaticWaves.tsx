@@ -96,8 +96,7 @@ void main() {
   float hue = abs(snoise(vec3(uv * uFrequency, uTime * uSpeed)));
   vec3 rainbowColor = hsv2rgb(vec3(hue, 1.0, uValue));
   fragColor = vec4(rainbowColor, 1.0);
-}
-`;
+}`;
 
 const dotVertexShader = `#version 300 es
 in vec2 uv;
@@ -109,10 +108,9 @@ void main() {
 }`;
 
 const dotFragmentShader = `#version 300 es
-precision mediump float;
-
-uniform sampler2D uTexture;
+precision highp float;
 uniform vec2 uResolution;
+uniform sampler2D uTexture;
 uniform int uPaletteCount;
 uniform vec3 uPalette[10];
 uniform float uPaletteAlpha[10];
@@ -359,6 +357,8 @@ export default function ChromaticWaves({
       dpr: Math.min(window.devicePixelRatio || 1, 2),
       alpha: true,
       premultipliedAlpha: false,
+      depth: false,
+      antialias: false,
     });
     const gl = renderer.gl;
     container.appendChild(gl.canvas);
@@ -485,10 +485,7 @@ export default function ChromaticWaves({
     }
 
     return () => {
-      if (rafIdRef.current) {
-        cancelAnimationFrame(rafIdRef.current);
-        rafIdRef.current = null;
-      }
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
       if (resizeHandler) window.removeEventListener("resize", resizeHandler);
       if (resizeObserver) {
         try {
