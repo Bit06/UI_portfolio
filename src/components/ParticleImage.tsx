@@ -768,6 +768,29 @@ export default function ParticleImage(__props: any) {
                 startAnimRef.current("assembling")
         }
     }
+    const onTouchMove = (e: React.TouchEvent) => {
+        const canvas = canvasRef.current
+        if (!canvas || e.touches.length === 0) return
+        const touch = e.touches[0]
+        const rect = canvas.getBoundingClientRect()
+        const { W, H } = dimsRef.current
+        const scaleX = rect.width > 0 ? W / rect.width : 1
+        const scaleY = rect.height > 0 ? H / rect.height : 1
+        const mx = (touch.clientX - rect.left) * scaleX
+        const my = (touch.clientY - rect.top) * scaleY
+        const prev = prevMouseRef.current
+        if (prev.x > -9999) {
+            const ddx = mx - prev.x, ddy = my - prev.y
+            mouseSpeedRef.current = Math.sqrt(ddx * ddx + ddy * ddy)
+        }
+        prevMouseRef.current = { x: mx, y: my }
+        mouseRef.current = { x: mx, y: my, active: true }
+        if ((physicsRef.current as any).hover) {
+            const s = animStateRef.current
+            if (s === "idle" || s === "scattering")
+                startAnimRef.current("assembling")
+        }
+    }
     const onMouseLeave = () => {
         mouseRef.current = { x: -99999, y: -99999, active: false }
         if ((physicsRef.current as any).hover) {
@@ -790,9 +813,13 @@ export default function ParticleImage(__props: any) {
         >
             <canvas
                 ref={canvasRef}
-                style={{ display: "block", width: "100%", height: "100%" }}
+                style={{ display: "block", width: "100%", height: "100%", touchAction: "none" }}
                 onMouseMove={onMouseMove}
                 onMouseLeave={onMouseLeave}
+                onTouchStart={onTouchMove}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onMouseLeave}
+                onTouchCancel={onMouseLeave}
             />
             {!image && (
                 <div
