@@ -13,24 +13,23 @@ import {
 const INTRINSIC_WIDTH = 600;
 const INTRINSIC_HEIGHT = 600;
 
-const perlinVertexShader = `#version 300 es
-in vec2 uv;
-in vec2 position;
-out vec2 vUv;
+const perlinVertexShader = `
+attribute vec2 uv;
+attribute vec2 position;
+varying vec2 vUv;
 void main() {
   vUv = uv;
-  gl_Position = vec4(position, 0., 1.);
+  gl_Position = vec4(position, 0.0, 1.0);
 }`;
 
-const perlinFragmentShader = `#version 300 es
+const perlinFragmentShader = `
 precision mediump float;
 uniform float uFrequency;
 uniform float uTime;
 uniform float uSpeed;
 uniform float uValue;
 uniform vec2 uResolution;
-in vec2 vUv;
-out vec4 fragColor;
+varying vec2 vUv;
 
 vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -95,29 +94,32 @@ void main() {
   uv = (uv - 0.5) * vec2(aspect, 1.0) + 0.5;
   float hue = abs(snoise(vec3(uv * uFrequency, uTime * uSpeed)));
   vec3 rainbowColor = hsv2rgb(vec3(hue, 1.0, uValue));
-  fragColor = vec4(rainbowColor, 1.0);
+  gl_FragColor = vec4(rainbowColor, 1.0);
 }`;
 
-const dotVertexShader = `#version 300 es
-in vec2 uv;
-in vec2 position;
-out vec2 vUv;
+const dotVertexShader = `
+attribute vec2 uv;
+attribute vec2 position;
+varying vec2 vUv;
 void main() {
   vUv = uv;
-  gl_Position = vec4(position, 0., 1.);
+  gl_Position = vec4(position, 0.0, 1.0);
 }`;
 
-const dotFragmentShader = `#version 300 es
-precision highp float;
-uniform vec2 uResolution;
+const MAX_COLORS = 10;
+const dotFragmentShader = `
+precision mediump float;
+
+#define MAX_COLORS 10
+
 uniform sampler2D uTexture;
+uniform vec2 uResolution;
 uniform int uPaletteCount;
-uniform vec3 uPalette[10];
-uniform float uPaletteAlpha[10];
+uniform vec3 uPalette[MAX_COLORS];
+uniform float uPaletteAlpha[MAX_COLORS];
 uniform float uCellSize;
 uniform float uGamma;
 uniform float uPaletteBias;
-out vec4 fragColor;
 
 void main() {
   vec2 pix = gl_FragCoord.xy;
@@ -125,32 +127,34 @@ void main() {
 
   vec2 cellIdx = floor(pix / cell);
   vec2 cellCenter = (cellIdx + 0.5) * cell;
-  vec3 col = texture(uTexture, cellCenter / uResolution.xy).rgb;
+  vec3 col = texture2D(uTexture, cellCenter / uResolution.xy).rgb;
   float gray = 0.3 * col.r + 0.59 * col.g + 0.11 * col.b;
   gray = pow(clamp(gray, 0.0001, 1.0), uGamma);
 
   vec2 cellUV = fract(pix / cell) - 0.5;
   float dist = length(cellUV);
   float radius = clamp(gray + uPaletteBias, 0.0, 1.0) * 0.5;
-  float aa = fwidth(dist) + 1e-4;
+  
+  float aa = 0.05;
   float mark = 1.0 - smoothstep(radius - aa, radius + aa, dist);
 
   float g2 = clamp(gray + uPaletteBias, 0.0, 1.0);
   int cnt = max(uPaletteCount, 1);
-  vec3 dotCol;
-  float dotOpacity;
-  if (cnt <= 1) {
-    dotCol = uPalette[0];
-    dotOpacity = uPaletteAlpha[0];
-  } else {
+  vec3 dotCol = uPalette[0];
+  float dotOpacity = uPaletteAlpha[0];
+
+  if (cnt > 1) {
     float scaled = g2 * float(cnt - 1);
     int seg = int(floor(scaled));
-    seg = clamp(seg, 0, cnt - 2);
-    float f = clamp(scaled - float(seg), 0.0, 1.0);
-    dotCol = mix(uPalette[seg], uPalette[seg + 1], f);
-    dotOpacity = mix(uPaletteAlpha[seg], uPaletteAlpha[seg + 1], f);
+    for (int i = 0; i < MAX_COLORS - 1; i++) {
+      if (i == seg) {
+        float f = clamp(scaled - float(i), 0.0, 1.0);
+        dotCol = mix(uPalette[i], uPalette[i + 1], f);
+        dotOpacity = mix(uPaletteAlpha[i], uPaletteAlpha[i + 1], f);
+      }
+    }
   }
-  fragColor = vec4(dotCol, mark * dotOpacity);
+  gl_FragColor = vec4(dotCol, mark * dotOpacity);
 }`;
 
 type Rgba = { r: number; g: number; b: number; a: number };
