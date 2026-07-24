@@ -206,36 +206,7 @@ export const portfolioItems: PortfolioItem[] = [
             '/images/gallery/MyEstate - (Dashboard) Login.webp'
           ]
         },
-        {
-          title: "Action-Oriented Mobile (Tenants & Managers)",
-          content: "While executives need broad visibility, Tenants, Residents, and Facility Managers need immediate, on-the-go action. I adopted a strict mobile-first approach for these users. The interface strips away complex reporting to focus purely on utility: submitting maintenance tickets, tracking rent payments, and communicating directly with management.",
-          displayLayout: 'mobile-frame-carousel',
-          imageUrls: [
-            '/images/gallery/MyEstate - (Mobile) Admin Dashboard (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Admin Customers (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Admin Properties (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Admin Properties Details (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Admin Security & Permssion - Authentication  (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Admin Transaction (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Facility Manager Dashboard (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Facility Manager Properties (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Facility Manager Request (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Facility Manager Request - Overview (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Landlord Tenant Detail  - Overview (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Landlord Transaction (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Landord Dashboard (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Resident - Active  (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Resident Chat (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Resident Chat Detail (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Resident Dashboard (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Resident Pay Service Charge (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Resident Request Details - Overview (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Tenant Dashboard (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Tenant Pay Rent (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Tenant Transaction (Mobile).webp',
-            '/images/gallery/MyEstate - (Mobile) Login-1.webp'
-          ]
-        },
+
         {
           title: "Scaling with Systems",
           content: "Managing 5+ distinct dashboards would have been impossible without a rigid, centralized design system. To ensure a flawless developer handoff and maintain UI consistency across the entire ecosystem, I built a comprehensive Figma component library. By leveraging global design tokens, strict auto-layout rules, and reusable variants for data tables and form fields, I empowered the engineering team to build the platform efficiently and at scale.",
@@ -255,7 +226,7 @@ export const portfolioItems: PortfolioItem[] = [
     slug: 'chowcheck',
     title: 'ChowCheck',
     category: 'FoodTech Utility',
-    imageUrl: '/images/main/MY-ESTATE - Homepage.webp', // Placeholder for now
+    imageUrl: '/images/timeline/CHOWCHECK - First Image.webp',
     phoneImageUrl: '',
     summary: "I built a smart campus food assistant that links daily budgets and provisions to stretch a student's chow allowance all semester. Serving as Lead Product Designer and Web Developer, I engineered this resilient, offline-first utility from the ground up.",
     caseStudy: {
@@ -265,7 +236,7 @@ export const portfolioItems: PortfolioItem[] = [
         summary: "I built a smart campus food assistant that links daily budgets and provisions to stretch a student's chow allowance all semester. Serving as Lead Product Designer and Web Developer, I engineered this resilient, offline-first utility from the ground up.",
         role: "Lead Product Designer & Web Developer",
         timeline: "June 2026 – Present",
-        imageUrl: '/images/main/MY-ESTATE - Homepage.webp', // Placeholder
+        imageUrl: '/images/timeline/CHOWCHECK - First Image.webp',
         imageAlt: "ChowCheck Hero Placeholder"
       },
       sections: [
