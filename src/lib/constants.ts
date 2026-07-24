@@ -176,13 +176,13 @@ export const portfolioItems: PortfolioItem[] = [
         {
           title: "The Core Challenge: One Platform, Five Worlds",
           content: "Property management relies on a tangle of deeply disconnected workflows. Landlords, tenants, residents, and managers use separate, inefficient systems, leading to costly errors in rent tracking, maintenance, and financial reporting.\n\n**The Tangle:** Disconnected systems cause massive friction, miscommunication, and data loss across the property lifecycle.\n\n**The UX Challenge:** Designing a unified platform that serves five distinct user types with fundamentally conflicting needs—without making the interface feel bloated or compromising security.",
-          imageUrl: '/images/core-challenge.svg',
+          imageUrl: '/images/main/core-challenge.svg',
           imageAlt: 'The core challenge diagram showing disconnected systems',
         },
         {
           title: "The Breakthrough Insight: RBAC & Permission Matrix",
           content: "My initial discovery phase revealed a critical flaw in the project's initial assumptions: a 'Tenant' and a 'Resident' are NOT the same user. Assuming they were would have ruined the financial architecture.\n\n**Tenant:** Pays rent directly to the Landlord.\n**Resident:** Pays service charges to the Facility Manager.\n\nBy splitting these roles, I defined a highly secure, clear Role-Based Access Control (RBAC) structure for all 5 user types (Executive, Landlord, Facility Manager, Tenant, Resident). This pivot ensured the UI was driven by sound business logic, preventing catastrophic financial overlap.",
-          imageUrl: '/images/matrix.svg',
+          imageUrl: '/images/main/matrix.svg',
         },
         {
           title: "Role-Based Dashboards (The 'God View')",
@@ -239,13 +239,13 @@ export const portfolioItems: PortfolioItem[] = [
         {
           title: "Scaling with Systems",
           content: "Managing 5+ distinct dashboards would have been impossible without a rigid, centralized design system. To ensure a flawless developer handoff and maintain UI consistency across the entire ecosystem, I built a comprehensive Figma component library. By leveraging global design tokens, strict auto-layout rules, and reusable variants for data tables and form fields, I empowered the engineering team to build the platform efficiently and at scale.",
-          imageUrl: '/images/MyEsate Handoff.png',
+          imageUrl: '/images/main/MyEsate Handoff.png',
           imageAlt: 'Figma component library for MyEstate',
         },
         {
           title: "The Microcopy Polish",
           content: "A user's experience is heavily shaped by the words they read. Because the platform serves five entirely different mindsets, building a context-aware microcopy library was essential. The tone of the UI adapts based on the user's role—for example, a rent reminder for a Tenant is designed to be empathetic and helpful, whereas a late-payment alert for an Executive is direct, data-driven, and urgent. This micro-level attention to detail ensures the platform feels intelligent and deeply human.",
-          imageUrl: '/images/micro.png',
+          imageUrl: '/images/main/micro.png',
           imageAlt: 'Microcopy polish examples',
         }
       ]
