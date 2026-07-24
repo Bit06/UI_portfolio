@@ -19,6 +19,8 @@ interface TimelineItem {
   project: string;
   buttons: ButtonInfo[];
   image: string;
+  isMobile?: boolean;
+  isContain?: boolean;
 }
 
 const TIMELINE_DATA: TimelineItem[] = [
@@ -29,7 +31,8 @@ const TIMELINE_DATA: TimelineItem[] = [
       { label: "Case Study", type: "case-study", link: "/case-study/chowcheck" },
       { label: "Website Live", type: "website-live", link: "https://www.chowcheck.app/" }
     ],
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+    image: "/images/timeline/CHOWCHECK - First Image.webp",
+    isMobile: true
   },
   {
     year: "2025",
@@ -38,7 +41,7 @@ const TIMELINE_DATA: TimelineItem[] = [
       { label: "Case Study", type: "case-study", link: "/case-study/echo" },
       { label: "Website Live", type: "website-live", link: "https://www.echo-ng.com/" }
     ],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    image: "/images/timeline/ECHO - Fist Image.webp"
   },
   {
     year: "2025",
@@ -46,7 +49,7 @@ const TIMELINE_DATA: TimelineItem[] = [
     buttons: [
       { label: "Case Study", type: "case-study", link: "/case-study/myestate" }
     ],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+    image: "/images/timeline/MY-ESTATE - First Image.webp"
   },
   {
     year: "2025",
@@ -54,23 +57,24 @@ const TIMELINE_DATA: TimelineItem[] = [
     buttons: [
       { label: "Case Study", type: "case-study", link: "/case-study/shop-hebron" }
     ],
-    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80"
+    image: "/images/timeline/SHOP HEBRON - First Image.webp"
   },
   {
     year: "2024",
     project: "Sterling Crest (Facility Management)",
     buttons: [
-      { label: "View Gallery", type: "view-gallery", link: "/gallery" }
+      { label: "View Gallery", type: "view-gallery", link: "/galleries?project=sterling-crest" }
     ],
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+    image: "/images/timeline/STERLING CREST - First Image.webp"
   },
   {
     year: "2023 – 2025",
     project: "ROCON & VIRA (Academic Projects)",
     buttons: [
-      { label: "View Gallery", type: "view-gallery", link: "/gallery" }
+      { label: "View Gallery", type: "view-gallery", link: "/galleries?project=vira-rocon" }
     ],
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+    image: "/images/timeline/VIRA-ROCON - First Image.webp",
+    isContain: true
   }
 ];
 
@@ -169,12 +173,12 @@ export default function Timeline() {
                 initial={false}
                 animate={{ y: yPos }}
                 transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                className="absolute inset-0 w-full h-full bg-zinc-900"
+                className={`absolute inset-0 w-full h-full ${item.isMobile ? 'bg-[#fed7aa] p-6' : 'bg-zinc-900'}`}
               >
                 <img
                   src={item.image}
                   alt={item.project}
-                  className="w-full h-full object-cover opacity-90"
+                  className={`w-full h-full ${item.isMobile || item.isContain ? 'object-contain' : 'object-cover'} ${item.isMobile ? 'drop-shadow-2xl' : 'opacity-90'}`}
                 />
               </motion.div>
             );

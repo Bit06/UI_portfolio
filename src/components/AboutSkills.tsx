@@ -52,7 +52,7 @@ export default function AboutSkills() {
           <RevealWord>Hi,</RevealWord> <RevealWord>I</RevealWord> <RevealWord>am</RevealWord>
           <RevealIcon>
             <span className="inline-block w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-[10px] md:rounded-2xl overflow-hidden border-2 border-white/10 shadow-xl relative top-[-2px] md:top-[-4px]">
-              <img src="/images/Profile Image.jpg" alt="David Oloniyo" className="w-full h-full object-cover" />
+              <img src="/images/Profile Image.webp" alt="David Oloniyo" className="w-full h-full object-cover" />
             </span>
           </RevealIcon>
           <RevealWord>David</RevealWord> <RevealWord>Oloniyo</RevealWord>

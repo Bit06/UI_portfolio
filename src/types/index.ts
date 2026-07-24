@@ -2,10 +2,13 @@ export interface CaseStudySection {
   title: string;
   content: string;
   imageUrl?: string;
+  imageUrls?: string[];
   imageAlt?: string;
+  bottomImageUrl?: string;
   phoneImageUrl?: string;
   phoneImageAlt?: string;
   device?: 'laptop' | 'phone' | 'laptop-and-phone';
+  displayLayout?: 'carousel' | 'side-by-side' | 'mobile-frame-carousel' | 'thumbnail-carousel';
   isScrollable?: boolean;
   isPhoneScrollable?: boolean;
 }

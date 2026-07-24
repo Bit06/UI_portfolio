@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, DotGothic16 } from "next/font/google";
 import "./globals.css";
+import LenisProvider from "@/components/LenisProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,10 +27,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${dotGothic.variable} h-full antialiased`}
+      className={`${inter.variable} ${dotGothic.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans bg-background text-foreground dot-pattern">
-        {children}
+      <body className="font-sans bg-background text-foreground dot-pattern" suppressHydrationWarning>
+        <LenisProvider>
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

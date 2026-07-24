@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import FloatingDock from '@/components/FloatingDock';
+import ImageCarousel from '@/components/ImageCarousel';
+import MobileFrameCarousel from '@/components/MobileFrameCarousel';
+import ThumbnailCarousel from '@/components/ThumbnailCarousel';
 
 export function generateStaticParams() {
   return portfolioItems.map((item) => ({
@@ -38,7 +41,7 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
             </span>
           ))}
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-8 leading-tight">
+        <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground mb-8 leading-tight">
           {hero.title}
         </h1>
         <div className="flex flex-col md:flex-row gap-8 mb-16 border-t border-b border-foreground/10 py-8">
@@ -55,33 +58,94 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
         </div>
 
         {hero.imageUrl && (
-          <div className="w-full aspect-[16/9] rounded-3xl overflow-hidden bg-foreground/5 shadow-2xl relative">
+          <div className="w-full aspect-[16/9] rounded-xl md:rounded-3xl overflow-hidden bg-foreground/5 shadow-2xl relative">
             <img src={hero.imageUrl} alt={hero.imageAlt || hero.title} className="w-full h-full object-cover" />
           </div>
         )}
       </section>
 
       {/* Sections */}
-      <div className="max-w-4xl mx-auto px-6 flex flex-col gap-24 py-16">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-16 md:gap-24 py-8 md:py-16">
         {sections.map((section: any, idx: number) => (
-          <section key={idx} className="flex flex-col gap-8">
-            <div className="md:w-2/3">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{section.title}</h2>
-              <div className="prose prose-lg dark:prose-invert text-secondary whitespace-pre-wrap">
-                {section.content}
+          <section key={idx} className="flex flex-col gap-8 md:gap-12">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-16">
+              <div className="md:w-1/3">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground md:sticky md:top-24">{section.title}</h2>
+              </div>
+              <div className="md:w-2/3">
+                <div 
+                  className="prose prose-base md:prose-lg dark:prose-invert text-secondary whitespace-pre-wrap max-w-none leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: section.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+                />
               </div>
             </div>
             
-            {(section.imageUrl || section.phoneImageUrl) && (
-              <div className={`mt-8 ${section.device === 'laptop-and-phone' ? 'flex flex-col md:flex-row gap-8 items-end' : ''}`}>
-                {section.imageUrl && (
-                  <div className={`rounded-2xl overflow-hidden bg-foreground/5 shadow-xl ${section.device === 'laptop-and-phone' ? 'w-full md:w-2/3 aspect-[16/9]' : 'w-full aspect-[16/9]'}`}>
-                    <img src={section.imageUrl} alt={section.imageAlt || ''} className={`w-full ${section.isScrollable ? 'h-auto' : 'h-full object-cover'}`} />
+            {(section.imageUrl || section.phoneImageUrl || section.imageUrls) && (
+              <div className="mt-8 w-full">
+                {section.device === 'laptop-and-phone' ? (
+                  <div className="flex flex-col gap-8 w-full">
+                    {/* Top Row: Two up */}
+                    <div className="flex flex-col md:flex-row gap-8 w-full md:items-stretch items-center justify-center">
+                      {section.imageUrl && (
+                        <div className="flex-[2] rounded-lg md:rounded-2xl overflow-hidden bg-foreground/5 shadow-xl flex items-center">
+                          <img src={section.imageUrl} alt={section.imageAlt || ''} className="w-full h-auto object-contain block" />
+                        </div>
+                      )}
+                      {section.phoneImageUrl && (
+                        <div className="flex-[1] flex justify-center py-4 md:py-0 w-3/4 md:w-auto">
+                          <div className="h-full w-auto aspect-[9/19] rounded-xl md:rounded-3xl overflow-hidden bg-foreground/5 shadow-2xl border-[4px] md:border-[8px] border-foreground">
+                            <img src={section.phoneImageUrl} alt={section.phoneImageAlt || ''} className="w-full h-full object-cover block" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    {/* Bottom Row: One down */}
+                    {section.bottomImageUrl && (
+                      <div className="w-full rounded-lg md:rounded-2xl overflow-hidden bg-foreground/5 shadow-xl">
+                        <img src={section.bottomImageUrl} alt="Full dashboard layout" className="w-full h-auto object-contain" />
+                      </div>
+                    )}
                   </div>
-                )}
-                {section.phoneImageUrl && (
-                  <div className="w-1/2 md:w-1/3 aspect-[9/19] rounded-3xl overflow-hidden bg-foreground/5 shadow-2xl border-[8px] border-foreground mx-auto md:mx-0">
-                    <img src={section.phoneImageUrl} alt={section.phoneImageAlt || ''} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full">
+                    {/* Single Image */}
+                    {section.imageUrl && !section.imageUrls && (
+                      <div className="rounded-lg md:rounded-2xl overflow-hidden bg-foreground/5 shadow-xl w-full">
+                        <img src={section.imageUrl} alt={section.imageAlt || ''} className={`w-full ${section.isScrollable ? 'h-auto' : 'h-auto object-contain'}`} />
+                      </div>
+                    )}
+                    
+                    {/* Image Lists (Carousels, Side-by-Side, etc) */}
+                    {section.imageUrls && (
+                      section.displayLayout === 'mobile-frame-carousel' ? (
+                        <div className="w-full">
+                          <MobileFrameCarousel images={section.imageUrls} />
+                        </div>
+                      ) : section.displayLayout === 'thumbnail-carousel' ? (
+                        <div className="w-full">
+                          <ThumbnailCarousel images={section.imageUrls} />
+                        </div>
+                      ) : section.displayLayout === 'side-by-side' ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-start">
+                          {section.imageUrls.map((url: string, i: number) => (
+                            <div key={i} className="rounded-lg md:rounded-2xl overflow-hidden bg-foreground/5 shadow-xl">
+                              <img src={url} alt={`${section.imageAlt || 'Image'} ${i+1}`} className="w-full h-auto object-contain" />
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="w-full">
+                          <ImageCarousel images={section.imageUrls} altPrefix={section.imageAlt} />
+                        </div>
+                      )
+                    )}
+
+                    {/* Phone Image only (if not in laptop-and-phone layout) */}
+                    {section.phoneImageUrl && (
+                      <div className="w-2/3 md:w-1/3 aspect-[9/19] rounded-xl md:rounded-3xl overflow-hidden bg-foreground/5 shadow-2xl border-[4px] md:border-[8px] border-foreground mx-auto mt-8">
+                        <img src={section.phoneImageUrl} alt={section.phoneImageAlt || ''} className="w-full h-full object-cover" />
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

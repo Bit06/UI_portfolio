@@ -20,12 +20,12 @@ function CaseStudyCard({ item, index }: { item: any, index: number }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link href={`/case-study/${item.slug}`} className="block w-full h-full p-4 md:p-6 border-2 border-dashed border-zinc-200/50 hover:border-zinc-200 rounded-3xl transition-colors duration-300 bg-background/50 backdrop-blur-sm">
-        <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] bg-foreground/5 border border-foreground/10 group-hover:shadow-2xl transition-all duration-500">
+        <div className={`relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] bg-foreground/5 border border-foreground/10 group-hover:shadow-2xl transition-all duration-500 ${item.isMobileHero ? 'bg-[#fed7aa] p-6' : ''}`}>
           {item.imageUrl ? (
             <img 
               src={item.imageUrl} 
               alt={item.title}
-              className="object-cover w-full h-full transform group-hover:scale-105 transition-all duration-700 grayscale group-hover:grayscale-0"
+              className={`w-full h-full transform transition-all duration-700 ${item.isMobileHero ? 'object-contain group-hover:-translate-y-2 drop-shadow-2xl' : 'object-cover group-hover:scale-105 grayscale group-hover:grayscale-0'}`}
               loading="lazy"
             />
           ) : (
