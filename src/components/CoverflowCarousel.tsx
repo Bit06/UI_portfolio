@@ -62,11 +62,10 @@ type Props = {
     arrowSize?: number
     arrowPosition?: number
     autoplay?: boolean
+    autoplayDirection?: "leftToRight" | "rightToLeft"
     transition?: any
     style?: React.CSSProperties
     onClose?: () => void
-    isMobile?: boolean
-    isMobile?: boolean
     isMobile?: boolean
     activeIndexExternal?: number
     onActiveIndexChange?: (index: number) => void
@@ -843,8 +842,6 @@ export default function CoverflowCarousel(__props: Props) {
             gradient={GRADIENT_FALLBACKS[i % GRADIENT_FALLBACKS.length]}
             onSelect={selectable ? goTo : undefined}
             isMobile={isMobile}
-            zoomedIndexExternal={zoomedIndexExternal}
-            onZoomedIndexChange={onZoomedIndexChange}
             zoomedIndex={zoomedIndex}
             setZoomedIndex={setZoomedIndex}
             zoomScale={zoomScale}

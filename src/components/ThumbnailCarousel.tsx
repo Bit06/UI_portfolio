@@ -11,7 +11,7 @@ export default function ThumbnailCarousel({ images }: { images: string[] }) {
     if (!images || images.length === 0) return null;
 
     const carouselRef = useRef<HTMLDivElement>(null);
-    const { inView } = useInView({ ref: carouselRef, threshold: 0.1 });
+    const inView = useInView(carouselRef, { amount: 0.1 });
 
     const handleNext = () => {
         setIsAutoPlaying(false);

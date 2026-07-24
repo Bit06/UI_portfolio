@@ -277,8 +277,8 @@ export default function ContinuousGallery({ sections }: ContinuousGalleryProps) 
 
     const HEX_COLORS = ['#fed7aa', '#e9d5ff', '#fecaca', '#bbf7d0', '#bfdbfe', '#fbcfe8'];
 
-    const renderTrackSet = (keySuffix: string, items: TrackItem[], ref?: React.RefObject<HTMLDivElement>) => (
-        <div ref={ref} className="flex gap-4 md:gap-8 pr-4 md:pr-8 h-full shrink-0 items-center">
+    const renderTrackSet = (keySuffix: string, items: TrackItem[], ref?: React.RefObject<HTMLDivElement | null>) => (
+        <div ref={ref as React.RefObject<HTMLDivElement>} className="flex gap-4 md:gap-8 pr-4 md:pr-8 h-full shrink-0 items-center">
             {items.map((item, idx) => {
                 const isMobileProj = item.project.name.toLowerCase().includes('mobile');
                 const cardId = `${item.uniqueId}-${keySuffix}`;
