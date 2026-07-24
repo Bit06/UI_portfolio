@@ -100,15 +100,6 @@ export const portfolioItems: PortfolioItem[] = [
           content: "Covenant University possessed a vibrant internal economy, but commerce was trapped in chaotic and 'spammy' social media groups. This created a massive trust deficit and significant friction for both parties.\n\n**The Friction:** Buyers were constantly bombarded with unstructured ads and risked falling for scams. Conversely, legitimate sellers fought a losing battle for visibility in fast-moving chat feeds. The existing 'system' bred distrust and inefficiency, highlighting the critical business goal: build a platform that eradicates spam and establishes foundational trust between peer-to-peer buyers and sellers.",
         },
         {
-          title: "The Landing Page",
-          content: "The public-facing marketing pages designed to onboard users and communicate trust.",
-          displayLayout: 'thumbnail-carousel',
-          imageUrls: [
-            '/images/gallery/Shop Hebron - (Landing Page) Desk.webp',
-            '/images/gallery/Shop Hebron - (Landing Page) About Us Desktop.webp'
-          ]
-        },
-        {
           title: "Designing for Trust (The Core Feature)",
           content: "In peer-to-peer marketplaces, designing for trust (verification, secure payments) is paramount and often more critical than novel UI features. Through deep qualitative insights, observation, and user interviews, I understood that the platform needed distinct, highly secure environments for both buyers and sellers.\n\nBy implementing clear 'Verified Seller' badging, transparent payout dashboards for vendors, and a user-centric dual-purchase flow, I designed an interface where trust was baked directly into the architecture. This professional environment directly addressed the 'spammy' nature of the old system.",
           displayLayout: 'thumbnail-carousel',
@@ -151,6 +142,15 @@ export const portfolioItems: PortfolioItem[] = [
           content: "A design is only as good as its execution. I concluded my contract by delivering a fully A/B-tested, high-fidelity prototype alongside a rigorously organized Figma component library.\n\nBy leveraging global design tokens and strict auto-layout rules, I ensured the engineering team had a flawless, developer-ready design system prepared for immediate deployment. This comprehensive handoff marked a highly successful conclusion to the project.",
           imageUrl: '/images/main/SHOP HEBRON - Second Image.webp',
           imageAlt: 'Shop Hebron design system and contract handoff'
+        },
+        {
+          title: "The Landing Page",
+          content: "The public-facing marketing pages designed to onboard users and communicate trust.",
+          displayLayout: 'thumbnail-carousel',
+          imageUrls: [
+            '/images/gallery/Shop Hebron - (Landing Page) Desk.webp',
+            '/images/gallery/Shop Hebron - (Landing Page) About Us Desktop.webp'
+          ]
         }
       ]
     }

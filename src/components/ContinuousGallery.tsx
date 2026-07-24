@@ -207,6 +207,7 @@ export default function ContinuousGallery({ sections }: ContinuousGalleryProps) 
     const bottomTrackInteracting = useRef(false);
     const lastTouchTopX = useRef(0);
     const lastTouchBottomX = useRef(0);
+    const interactionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const handleTopTouchStart = (e: React.TouchEvent) => {
         if (selectedProject) return;
@@ -256,8 +257,10 @@ export default function ContinuousGallery({ sections }: ContinuousGalleryProps) 
                 xRef.current -= delta;
             }
             
-            clearTimeout(window.interactionTimeout);
-            window.interactionTimeout = setTimeout(() => isInteracting.current = false, 150);
+            if (interactionTimeoutRef.current) {
+                clearTimeout(interactionTimeoutRef.current);
+            }
+            interactionTimeoutRef.current = setTimeout(() => isInteracting.current = false, 150);
         };
         
         if (!isMobile) {
@@ -266,7 +269,9 @@ export default function ContinuousGallery({ sections }: ContinuousGalleryProps) 
 
         return () => {
             window.removeEventListener('wheel', handleWheel);
-            clearTimeout(window.interactionTimeout);
+            if (interactionTimeoutRef.current) {
+                clearTimeout(interactionTimeoutRef.current);
+            }
         };
     }, [selectedProject, isMobile]);
 
