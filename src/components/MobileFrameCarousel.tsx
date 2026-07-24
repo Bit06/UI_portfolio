@@ -9,8 +9,8 @@ export default function MobileFrameCarousel({ images }: { images: string[] }) {
     const [isHovered, setIsHovered] = useState(false);
     const isInView = useInView(containerRef, { margin: "200px 0px" });
 
-    // Duplicate images to create a massive runway for the "infinite" illusion
-    const infiniteImages = [...images, ...images, ...images, ...images];
+    // Duplicate images to create a runway for the "infinite" illusion (2 copies is enough)
+    const infiniteImages = [...images, ...images];
 
     useEffect(() => {
         if (!scrollRef.current || isHovered || !isInView) return;
@@ -61,7 +61,7 @@ export default function MobileFrameCarousel({ images }: { images: string[] }) {
                         className="flex-shrink-0 w-[55vw] md:w-[260px] py-2"
                     >
                         <div className="w-full aspect-[9/19] rounded-2xl md:rounded-3xl overflow-hidden bg-foreground/5 shadow-2xl border-[2px] md:border-[4px] border-foreground">
-                            <img src={img} alt={`Mobile Screen ${idx}`} className="w-full h-full object-cover" />
+                            <img src={img} alt={`Mobile Screen ${idx}`} className="w-full h-full object-cover" loading="lazy" />
                         </div>
                     </div>
                 ))}

@@ -58,8 +58,8 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
         </div>
 
         {hero.imageUrl && (
-          <div className="w-full aspect-[16/9] rounded-xl md:rounded-3xl overflow-hidden bg-foreground/5 shadow-2xl relative">
-            <img src={hero.imageUrl} alt={hero.imageAlt || hero.title} className="w-full h-full object-cover" />
+          <div className={`w-full aspect-[16/9] rounded-xl md:rounded-3xl overflow-hidden shadow-2xl relative ${hero.isContainHero ? 'bg-[#1a1a1a] p-8 md:p-16' : 'bg-foreground/5'}`}>
+            <img src={hero.imageUrl} alt={hero.imageAlt || hero.title} className={`w-full h-full ${hero.isContainHero ? 'object-contain' : 'object-cover'}`} />
           </div>
         )}
       </section>
